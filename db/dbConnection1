@@ -1,0 +1,18 @@
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise; // Connecting to the database //
+
+mongoose
+  .connect("mongodb://localhost:27017/test_db", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Successfully connected to the database");
+  })
+  .catch((err) => {
+    console.log(err);
+    console.log("Could not connect to the database. Exiting now...");
+    process.exit();
+  });
